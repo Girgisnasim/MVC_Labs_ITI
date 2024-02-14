@@ -38,7 +38,7 @@ namespace lab.Controllers
         //get form data
         public IActionResult GetFormData(string name ,string Ploc, string city,int Dnum)
         {
-            Project project = new()
+            Project project = new Project()
             {
                 Pname = name,
                 Plocation = Ploc,
@@ -70,6 +70,14 @@ namespace lab.Controllers
             project.Dnum= Dnum;
             context.SaveChanges();
 
+            return RedirectToAction("Index");
+        }
+        //Delete
+        public IActionResult Delete(int id)
+        {
+            Project project = context.Project.SingleOrDefault(p => p.Pnumber == id);
+            context.Project.Remove(project);
+            context.SaveChanges();
             return RedirectToAction("Index");
         }
     }
