@@ -36,7 +36,7 @@ namespace lab.Controllers
             return View(departments);
         }
         //get form data
-        public IActionResult GetEditForm(string name ,string Ploc, string city,int Dnum)
+        public IActionResult GetFormData(string name ,string Ploc, string city,int Dnum)
         {
             Project project = new()
             {
@@ -48,6 +48,28 @@ namespace lab.Controllers
             };
             context.Project.Add(project);
             context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        //Update
+        //display form
+        public IActionResult getEditForm(int id)
+        {
+            Project proj=context.Project.SingleOrDefault(p=>p.Pnumber==id);
+
+            List<Department> departments = context.Department.ToList();
+            ViewData["departments"] = departments;
+            return View(proj);
+        }
+        //update form
+        public IActionResult Update(int id, string name, string Ploc, string city, int Dnum)
+        {
+            Project project=context.Project.SingleOrDefault(p=> p.Pnumber== id);
+            project.Pname= name;
+            project.Plocation= Ploc;
+            project.City= city;
+            project.Dnum= Dnum;
+            context.SaveChanges();
+
             return RedirectToAction("Index");
         }
     }
