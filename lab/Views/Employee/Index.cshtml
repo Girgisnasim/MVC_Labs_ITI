@@ -1,0 +1,41 @@
+﻿@model List<Employee>
+@{
+    //Layout = "_CustomLayout";
+    ViewData["Title"] = "Index";
+    int i = 1;
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Birth Date</th>
+            <th scope="col">Salary</th>
+            <th scope="col">More Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <th scope="row">@(i++)</th>
+                <td>@item.Fname @item.Lname</td>
+                <td>@item.Address</td>
+                <td>@item.Sex</td>
+                <td>@item.Bdate</td>
+                <td>@item.Salary</td>
+                <td><a href="http://localhost:5116/employee/Details/@item.SSN"><i class="fa-solid fa-circle-info"></i></a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+        
+@section Slide_title{
+    All Employees
+}
+@* @section FontAwesome_lib {
+    <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
+} *@
