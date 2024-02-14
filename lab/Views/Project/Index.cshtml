@@ -14,8 +14,10 @@
             <th scope="col">Project Name</th>
             <th scope="col">Project Loction</th>
             <th scope="col">City</th>
-            <th scope="col">Department</th>
-            <th scope="col">More Details </th>
+@*             <th scope="col">Department</th>
+ *@            <th scope="col">More Details </th>
+            <th scope="col">Update Project </th>
+
         </tr>
     </thead>
     <tbody>
@@ -26,10 +28,16 @@
                 <td>@item.Pname</td>
                 <td>@item.Plocation</td>
                 <td>@item.City</td>
-                <td>@item.DeptProject.Dname</td>
-                <td><a href="/project/Details/@item.Pnumber"><i class="fa-solid fa-circle-info"></i></a></td>
+@*                 <td>@item?.DeptProject.Dname</td>
+ *@                <td><a href="/project/Details/@item.Pnumber"><i class="fa-solid fa-circle-info"></i></a></td>
+                <td><a href=""><button class="btn btn-primary">Update</button></a></td>
+
             </tr>
         }
+        <div>
+            <a href="/project/getaddform"><button class="btn btn-primary">Add</button></a>
+        </div>
+        
     </tbody>
 </table>
 
