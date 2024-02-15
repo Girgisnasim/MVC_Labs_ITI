@@ -59,13 +59,9 @@ namespace lab.Controllers
         {
             List<Employee> mangers = context.Department.Include(d => d.Leader).Where(d => d.Dnum != id).Select(d => d.Leader).ToList();
 
-
             List<Employee> restEmps = context.Employee.Where(e => !mangers.Contains(e)).ToList();
             Department department = context.Department.SingleOrDefault(d => d.Dnum == id);
-            // ViewBag.departments = context.Department.ToList();
-            //List<Employee> mangers = context.Employee.Where(m => m.Manage.MGRSSN == m.SSN).ToList();
-            //List<Employee> employees = context.Employee.ToList();
-            //List<Employee> poss = employees.Except(mangers).ToList();
+
             ViewData["poss"]= restEmps;
             return View(department);
         }
@@ -84,6 +80,14 @@ namespace lab.Controllers
                 ViewBag.departments = context.Department.ToList();
                 return View("Edit");
             }
+
+        }
+        public IActionResult Delete(int id)
+        {
+            Department department = context.Department.SingleOrDefault(d => d.Dnum == id);
+            context.Department.Remove(department);
+            context.SaveChanges();
+            return RedirectToAction("Index");
 
         }
     }
