@@ -25,23 +25,25 @@
                 Menu
                 <i class="fas fa-bars ms-1"></i>
             </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="/employee/index">Employees</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/project/index">Project</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/department/index">Department</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/worksfor/index">Works_for</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
-            </div>
+
             <div class="collapse navbar-collapse" id="navbarResponsive" >
                 @if(Context.Session.GetInt32("id")!=null){
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                            <li class="nav-item"><a class="nav-link" href="/employee/index">Employees</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/project/index">Project</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/department/index">Department</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/worksfor/index">Works_for</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
                     <button class="btn btn-success">@Context.Session.GetString("name")</button>
                     <a class="btn btn-danger" href="/account/logout">LOGOUT</a>
                 }
                 else
                 {
                     <a class="btn btn-success" href="/account/login">LOGIN</a>
+
                 }
             </div>
         </div>
