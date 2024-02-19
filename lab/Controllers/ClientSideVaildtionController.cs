@@ -4,7 +4,7 @@ namespace lab.Controllers
 {
     public class ClientSideValidationController : Controller
     {
-        public JsonResult CheckAddress(string address)
+        public IActionResult CheckAddress(string address)
         {
             if (address == "Giza" || address == "Alex" || address == "Cairo")
             {
