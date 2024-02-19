@@ -1,0 +1,66 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using lab.ViewModels
+@model EmployeeVM
+
+<form asp-action="Add" asp-controller="Employee" method="post">
+    <div>
+        <label asp-for="Fname" class="form-label">Frist Name</label>
+        <input asp-for="Fname" class="form-control"/>
+        <span asp-validation-for="Fname" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Lname" class="form-lable">Last Name</label>
+        <input asp-for="Lname" class="form-control" />
+        <span asp-validation-for="Lname" class="text-danger"></span>
+
+    </div>
+    <div>
+        <label asp-for="Address" class="form-lable"></label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+
+    </div>
+    <div>
+        <label asp-for="Salary" class="form-lable"></label>
+        <input asp-for="Salary" class="form-control" />
+        <span asp-validation-for="Salary" class="text-danger"></span>
+
+    </div>
+    <div>
+        <label asp-for="Sex" class="form-lable"></label>
+        <input asp-for="Sex" class="form-control" />
+        <span asp-validation-for="Sex" class="text-danger" ></span>
+    </div>
+    <div>
+        <label asp-for="Email" class="form-lable"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Password" class="form-lable"></label>
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="confirmPassword" class="form-lable"></label>
+        <input asp-for="confirmPassword" class="form-control" />
+        <span asp-validation-for="confirmPassword" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Dno" class="form-lable"></label>
+@*         <select asp-for="Dno" asp-items="ViewBag.departments" class="form-select"></select>
+ *@
+        <select asp-for="Dno" asp-items="Model.departments" class="form-select"></select>
+
+    </div>
+    <input type="submit" value="Add" class="btn btn-primary" />
+</form>
+@section scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
