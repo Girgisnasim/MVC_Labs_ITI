@@ -14,6 +14,7 @@
             <th scope="col">Gender</th>
             <th scope="col">Birth Date</th>
             <th scope="col">Salary</th>
+            <th scope="col">Department</th>
             <th scope="col">More Details</th>
         </tr>
     </thead>
@@ -27,6 +28,7 @@
                 <td>@item.Sex</td>
                 <td>@item.Bdate</td>
                 <td>@item.Salary</td>
+                <td>@item.WorkIn.Dname</td>
                 <td><a href="/employee/Details/@item.SSN"><i class="fa-solid fa-circle-info"></i></a></td>
             </tr>
         }

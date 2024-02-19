@@ -2,6 +2,7 @@
 using lab.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace lab.Controllers
 {
@@ -16,7 +17,8 @@ namespace lab.Controllers
 
         public IActionResult Index()
         {
-            List<Employee> employees = context.Employee.ToList();
+            List<Employee> employees = context.Employee.Include(d => d.WorkIn).ToList();
+
             //transfer data
             return View(employees);
         }
@@ -24,7 +26,7 @@ namespace lab.Controllers
         //by id
         public IActionResult Details(int id)
         {
-            Employee employee = context.Employee.FirstOrDefault(e=>e.SSN==id);
+            Employee employee = context.Employee.Include(d=>d.WorkIn).FirstOrDefault(e=>e.SSN==id);
             return View(employee);
         }
 

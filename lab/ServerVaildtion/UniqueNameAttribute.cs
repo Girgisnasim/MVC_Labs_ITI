@@ -1,5 +1,6 @@
 ﻿using lab.Models;
 using lab.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 namespace lab.ServerVaildtion
 {
@@ -22,8 +23,8 @@ namespace lab.ServerVaildtion
             var employeeVM = (EmployeeVM)validationContext.ObjectInstance;
             ITIContext context = new ITIContext();
 
-            var existingEmployee = context.Employee
-                .Where(e => e.Fname == employeeVM.Fname && e.Lname == employeeVM.Lname)
+            var existingEmployee = context.Employee.Include(d => d.WorkIn)
+                .Where(e => e.Fname == employeeVM.Fname && e.Lname == employeeVM.Lname && e.Dno==employeeVM.Dno)
                 .FirstOrDefault();
 
             if (existingEmployee != null)

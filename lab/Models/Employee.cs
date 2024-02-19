@@ -34,6 +34,7 @@ namespace lab.Models
         public List<Employee> groub { get; set; }
 
         public Department WorkIn { get; set; }
+
         public Department Manage { get; set; }
 
         public List<Dependent> DependentEmployee { get; set; }
