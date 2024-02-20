@@ -83,7 +83,12 @@ namespace lab.Controllers
             ViewBag.employee= emp;
             return View();
         }
-
+        public IActionResult EditDB(Works_for works)
+        {
+            context.Works_For.Update(works);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
        
         public IActionResult editscript(int id , int ssn)
         {
