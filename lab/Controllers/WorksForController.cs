@@ -1,11 +1,16 @@
-﻿using lab.Models;
+﻿//using AspNetCore;
+using lab.Models;
+using lab.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 
 namespace lab.Controllers
 {
     public class WorksForController : Controller
     {
+
         private ITIContext context;
         public WorksForController()
         {
@@ -67,5 +72,27 @@ namespace lab.Controllers
 
             return View(worksForList);
         }
+        //======================================================================
+        //edit operaion
+        public IActionResult Edit(int id)
+        {
+            Employee emp = context.Employee.Where(p => p.SSN == id).SingleOrDefault();
+            List<Project> project = context.Works_For.Include(w=>w.ProjWorkFor).Where(w=>w.ESSn == id).Select(p=>p.ProjWorkFor).ToList();
+            
+            ViewBag.project = project;
+            ViewBag.employee= emp;
+            return View();
+        }
+
+       
+        public IActionResult editscript(int id , int ssn)
+        {
+            Works_for hours = context.Works_For.Where(w=>w.Pno == id && w.ESSn == ssn).FirstOrDefault();
+
+            return PartialView("_editpartial",hours);
+
+        }
+    
+
     }
 }

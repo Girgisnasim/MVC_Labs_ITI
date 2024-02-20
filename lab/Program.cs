@@ -12,7 +12,7 @@ namespace lab
 
             builder.Services.AddSession(Options =>
             {
-                Options.IdleTimeout = TimeSpan.FromMinutes(5);
+                Options.IdleTimeout = TimeSpan.FromMinutes(90);
             });
 
             var app = builder.Build();
@@ -30,6 +30,7 @@ namespace lab
             app.UseAuthorization();
 
             app.UseSession();
+           
 
             app.MapControllerRoute(
                 name: "default",

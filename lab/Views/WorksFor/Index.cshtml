@@ -13,10 +13,11 @@
             <th scope="col">#</th>
             <th scope="col">Employee Name</th>
             <th scope="col">Project Name</th>
-            <th scope="col">Hours </th>
-            <th scope="col">More Details </th>
-
-        </tr>
+            <th scope="col">Hours</th>
+            <th scope="col">More Details</th>
+            <th scope="col">Edit</th>
+@*             <th scope="col">Delete</th>
+ *@        </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
@@ -27,6 +28,9 @@
                 <td>@item.ProjWorkFor.Pname</td>
                 <td style="color:@ViewBag.Colors[i-2]">@item.Hours</td>
                 <td><a href="/worksfor/Details/@item.ESSn"><i class="fa-solid fa-circle-info"></i></a></td>
+                <td><a asp-action="Edit" asp-controller="worksfor" asp-route-id="@item.ESSn" class="btn btn-primary">Edit</a> </td>
+@*                 <td><a asp-action="Delete" asp-controller="worksfor" class="btn btn-danger">Delete</a> </td>
+ *@
             </tr>
         }  
     </tbody>

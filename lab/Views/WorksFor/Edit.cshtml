@@ -1,0 +1,37 @@
+﻿
+@model Works_for
+@{
+    SelectList list = new SelectList(ViewBag.project,"Pnumber", "Pname");
+    Employee emp = ViewBag.employee;
+
+
+}
+
+
+<h2>Edit Works_for</h2>
+
+
+    <div class="form-group">
+    <label class="control-label">first name</label>
+    <input value="@ViewBag.employee.Fname" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">last name</label>
+        <input value="@ViewBag.employee.Lname" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Pno" class="control-label">Project</label>
+    <select asp-for="Pno" asp-items="list" class="form-select" onchange="gethour(this.value,@emp.SSN)"></select>
+    </div>
+    <div class="form-group" id="hh">
+        
+    </div>
+
+@section scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/java.js"></script>
+    }
+
+    
